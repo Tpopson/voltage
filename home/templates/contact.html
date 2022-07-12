@@ -1,0 +1,47 @@
+      <!-- contact  -->
+      <div id="contact">
+        <h1 class="cap">contact us</h1>
+        <div class="container">
+          <div class="row text-warning justify-content-around">
+           <div class="col-10 col-sm-6">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Iste consectetur dolorum accusamus iusto, vitae amet sint 
+              aut ex dolorem? 
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Iste consectetur dolorum accusamus iusto, vitae amet sint 
+              aut ex dolorem? 
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Iste consectetur dolorum accusamus iusto, vitae amet sint 
+              aut ex dolorem? 
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Iste consectetur dolorum accusamus iusto, vitae amet sint 
+              aut ex dolorem? 
+            </p>
+           </div>
+           <div class="col-10 col-sm-6">
+             <div class="form">
+              <form action="{% url 'contact' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                  <input type="text" name="full_name" class="form-control" id="exampleInputText1">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Message</label>
+                  <textarea name="message" class="form-control" id="" cols="30" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-warning text-white">Submit</button>
+              </form>
+             </div>
+           </div>
+          </div>
+        </div>
+      </div>
+      <!-- contact done -->

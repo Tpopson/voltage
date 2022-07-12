@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Home  {% endblock title %}
+
+<!-- header -->
+{% block header %}  {% include "header.html" %}  {% endblock header %}
+<!-- header done -->
+
+<!-- carousel -->
+{% block carousel %}  {% include "carousel.html" %}  {% endblock carousel %}
+<!-- carousel done -->
+
+{% block content %}
+        <!-- main content  -->
+        <div class="container">
+            <h1 class="cap">latest clothes brands</h1>
+            <div class="row justify-content-center justify-content-md-around justify-content-lg-center text-center gy-5 text-warning">
+              {% if latest %}
+                {% for v in latest %}
+              <div class="col-10 col-sm-6 col-md-5 col-lg-4 col-xl-3">
+                <div class="card">
+                  <img src="{{v.img.url}}" class="card-img-top img">
+                  <div class="card-body">
+                    <h5 class="card-title text-capitalize">Name: {{v.name}}</h5>
+                    <p class="card-text">Price: {{v.price}}</p>
+                    <p class="card-text  text-truncate">Description: {{v.description}}</p>
+                    <a href="/details.html" class="btn btn-warning text-white w-100">Add to Cart</a>
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+          <!-- main content done -->
+    
+{% endblock content %}
+
+<!-- about -->
+{% block about %}  {% include "about.html" %}  {% endblock about %}
+<!-- about done -->
+
+<!-- contact -->
+{% block contact %} {% include "contact.html" %}  {% endblock contact %}
+<!-- contact done -->
+
+<!-- team -->
+{% block team %} {% include "team.html" %} {% endblock team %}
+<!-- team done -->
+
+<!-- footer -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}
+<!-- footer done -->

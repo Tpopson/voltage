@@ -1,0 +1,388 @@
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body{
+    background: skyblue;
+} */
+.navbar{
+    background: peachpuff;
+}
+
+/* .navbar-expand-lg{
+    color: green;
+    display: flex;
+    justify-content: space-between;
+    background: hotpink;
+} */
+
+.navbar .navbar-toggler i{
+    color: red;
+}
+
+.carousel-inner{
+    height: 60vh;    
+}
+
+.carousel-inner .carousel-item{
+    height: 100%;
+}
+
+.carousel-inner .carousel-item img{
+    height: 100%;
+}
+
+.navbar .navbar-toggler{
+    border: 2px solid yellow;
+}
+
+.navbar .navbar-toggler:focus{
+    border: 3px solid palevioletred;
+    box-shadow: none;
+    outline: none;
+}
+
+.navbar .navbar-brand{
+    color: red;
+    font-weight: 900;
+}
+
+#navbarSupportedContent a{
+    color: red;
+    font-weight: 700;
+    float: right;
+}
+
+/* .protein{
+    display: inline;
+    float: right;
+} */
+
+/* #navbarDropdown{
+    display: flex;
+    float: left;
+} */
+
+.nav-item .dropdown-menu{
+    background: peachpuff;
+    float: right;
+}
+
+.nav-item .dropdown-menu .dropdown-item:hover{
+    background: palegreen;
+    color: white !important;
+}
+
+.navbar form input[type="search"]{
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+.navbar form input[type="search"] :focus{
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+.navbar .btn-hover{
+    color: red;
+    border: solid grey 2px;
+    box-shadow: none;
+    outline: none;
+}
+
+.navbar .btn-hover:hover{
+    background: red;
+    color: white;
+}
+
+.carousel .carousel-indicators button{
+    background: palegreen;
+    width: 20px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.carousel-control-next i{
+    color: palegreen;
+    font-size: 3rem;
+}
+.carousel-control-prev i{
+    color: palegreen;
+    font-size: 3rem;
+}
+
+.map iframe{
+    width: 100%;
+    height: 60vh;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.team{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+
+.voltage{
+    margin: 3rem;
+    display: grid;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.voltage img{
+    height: 30vh;
+    border-radius: 100%;
+}
+
+.best{
+ color: red;
+ font-weight: bold;
+ letter-spacing: .5rem;
+ text-align: center;
+ font-style: italic;
+ font-size: 3rem;
+}
+
+
+.contact{
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.caddress{
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+}
+
+.cform{
+    padding: 2rem;
+}
+
+.ccform{
+    background: pink;
+    width: 100%;
+    height: 55vh;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    box-shadow: 5px 10px 50px 5px blue;
+}
+
+.ccform form{
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+}
+
+.ccform div{
+    margin-top: .7rem;
+    margin-bottom: .7rem;
+}
+
+.ccform input[type="text"],
+.ccform input[type="email"]{
+    height: 2.5rem;
+    width: 100%;
+    padding-left: 1rem;
+    border: 1px solid pink; 
+    border-radius: 5rem;
+}
+
+.ccform input[type="text"]:focus{
+    outline: none;
+    border: 1px solid blue;
+}
+
+.ccform input[type="submit"]{
+    margin-top: .3rem;
+    margin-bottom: 1rem;
+    padding: .5rem 1.5rem;
+    background: skyblue;
+    color: blue;
+    font-weight: bold;
+    outline: none;
+    border: 1px solid skyblue;
+    border-radius: 2rem;
+}
+
+.ccform input[type="submit"]:hover{
+    background: red;
+    color: white;
+    border: none;
+
+}
+
+.ccform textarea{
+    width: 100%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    border: 1px solid skyblue ;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.ccform textarea:focus{
+    outline: none;
+    border: 1px solid skyblue;
+}
+
+.cadd{
+    background: pink;
+    padding: 2rem;
+    border-radius: 5rem;
+}
+
+.footer{
+    text-align: center;
+    background: peachpuff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.about{
+    display: flex;
+    /* grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); */
+    justify-content: space-around;
+    margin: 10rem;
+}
+
+.about .ima{
+    height: 30vh;
+    display: flex;
+}
+
+.about .ima img{
+    border-radius: 50%;
+}
+
+.about .lor{
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.cap{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 5rem;
+}
+
+/* shopcart */
+.table-box input[type="number"]{
+    color: red;
+    text-align: center;
+    outline: none;
+    border: 3px solid peachpuff;
+}
+.table-box tr{
+    color: crimson;
+    text-transform: capitalize;
+    text-align: center;
+}
+.table-box button{
+    border: none;
+}
+.table-box .fas{
+    color: crimson;
+}
+/* checkout */
+.check-title{
+    text-align: center;
+    text-transform: capitalize;
+    color: silver;
+    font-weight: 900;
+}
+.form-box{
+    color: brown;
+}
+.form-box input{
+    box-shadow: none;
+    outline: none;
+    border: 1px solid crimson;
+    color: blue;
+    background-color: aqua;
+}
+.form-box input:focus{
+    box-shadow: 1px 1px 3px 2px brown;
+    outline: none;
+    border: 1px solid crimson;
+    color: brown;
+}
+
+/* styling footer */
+.foota a{
+    color: white;
+}
+
+.foota a:hover{
+    color: green;
+    letter-spacing: .5rem;
+}
+
+.foota i{
+    font-size: 2rem;
+}
+
+.img{
+    width: 20rem;
+}
+/* styling footer */
+
+
+/* styling callback */
+.callback a{
+    background: crimson;
+    color: white;
+    text-transform: capitalize;
+    /* padding: .2rem; */
+    /* margin: 1rem; */
+}
+.callback a:hover{
+    background: peachpuff;
+    color: crimson;
+    font-weight: 600;
+}
+/* styling callback done */
+/* styling dashboard */
+.profile-form input{
+    background: peachpuff;
+    color: crimson;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+.profile-form input:focus{
+    background: peachpuff;
+    color: crimson;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+.profile-form label{
+    color: crimson;
+    font-weight: 600;
+}
+
+/* styling dashboard done */
+
+
+

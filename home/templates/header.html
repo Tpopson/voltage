@@ -1,0 +1,65 @@
+    <!-- header  -->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+              <a class="navbar-brand" href="{% url 'index' %}">Voltage</a> 
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products' %}">Products</a> 
+                    </li>
+                    {% if user.is_authenticated %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'displaycart' %}">
+                          {% if cartcount > 0 %}
+                            <span class="badge bg-warning text-white">{{cartcount}}</span>
+                          {% else %}
+                            <span class="badge bg-info text-danger">0</span>
+                          {% endif %}
+                        </a>
+                      </li>
+                    {% endif %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dashboard
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% if user.is_authenticated %}
+              <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'displaycart' %}">Shopcart</a></li> 
+              <li><a class="dropdown-item" href="{% url 'signout' %}">Signout</a></li>
+            {% else %}
+              <li><a class="dropdown-item" href="{% url 'signin' %}">Signin</a></li>
+              <li><a class="dropdown-item" href="{% url 'signup' %}">Signup</a></li>
+            {% endif %}
+          </ul>
+          </li>          
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-hover" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</div>
+      <!-- header done -->
+      <div class="container">
+        {% if messages %}
+          {% for message in messages  %}
+            <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
+              <strong>{{message}}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+       
+    
