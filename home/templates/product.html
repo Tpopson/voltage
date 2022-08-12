@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}| All products{% endblock title %}
+
+{% block carousel %}{% include 'banner.html' %} {% endblock carousel %} 
+
+
+{% block content %}
+<div class="container mb-5">
+    <h1 class="cap">latest products</h1>
+    <div class="row justify-content-center justify-content-md-around justify-content-lg-center text-center gy-5 text-warning">
+      {% if product %}
+        {% for item in product  %}
+          <div class="col-10 col-sm-6 col-md-5 col-lg-4 col-xl-3  brandnew">
+            <div class="card hidecard">
+              <a href="{% url 'details' item.id %}" class="text-decoration-none">
+                <img src="{{item.img.url}}" class="card-img-top img">
+              </a>
+              <div class="card-body newcard">
+                <h5 class="card-title text-capitalize">Product: {{item.title}}</h5>
+                <p class="card-text">Price: {{item.price}}.</p>
+                <p class="card-text  text-truncate">Description: {{item.description}}.</p>
+                {% if item.max < 1  %}
+                  <p class="text-white w-100 p-2 index-btn">Currently out of stock</p>
+                {% else %}
+                <form  action="{% url 'addtocart' %}" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" name="proid" value="{{item.id}}">
+                  <input type="hidden" name="quantity" value="1" min="{{item.min}}" max="{{item.max}}" class="form-control d-inline-block shadow-none border border-3 border-warning mt-3"> 
+                      <button type="submit" id="create-btn" class="btn  text-white w-100 mt-4 shopbtn">Add to Cart</button>
+                    </form> 
+                {% endif %}
+              </div>
+            </div>
+          </div>                   
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <!--  -->
+{% endblock content %}
+
+
+<!-- footer  -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}
+<!-- footer done -->

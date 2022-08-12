@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}|{{profile.user.username}}'s'  Basket{% endblock title %}
+
+{% block carousel %}{% include 'banner.html' %} {% endblock carousel %} 
+
+
+{% block content %}
+    <!-- content  -->
+  <div class="container my-5" data-aos="zoom-in" data-aos-duration="3000">
+    <h1 class="cap">checkout</h1>
+    <div class="row  justify-content-around">
+      <div class="col-10 col-sm-10 col-md-10 col-lg-5 col-xl-5 mb-5">
+        <h4 class="check-title mb-3">order summary</h4>
+        <div class="table-responsive table-box">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">image</th>
+                <th scope="col">price</th>
+                <th scope="col">quantity</th>
+                <th scope="col">amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if cart %}
+                {% for item in cart %}
+                  <tr>
+                    <td><img src="{{item.product.img.url}}" style="width: 60px;"></td>
+                    <td>{{item.price|floatformat:2|intcomma}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.amount|floatformat:2|intcomma}}</td>
+                  </tr>
+                {% endfor %}
+              {% endif %} 
+            </tbody>
+          </table>
+          <table class="table mb-5">
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>total: {{total|floatformat:2|intcomma}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-10 col-sm-10 col-md-10 col-lg-5 col-xl-5">
+        <h4 class="check-title mb-3">delivery address</h4>
+        <div class="form-box ml-5">
+          <form action="{% url 'pay' %}" method="POST">
+          {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputText1" class="form-label">First Name</label>
+              <input type="text" name="first_name" value="{{profile.first_name}}" class="form-control" id="exampleInputText1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputText1" class="form-label">Last Name</label>
+              <input type="text" name="last_name" value="{{profile.last_name}}" class="form-control" id="exampleInputText1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" name="email" value="{{profile.email}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputText1" class="form-label">Phone</label>
+              <input type="text" name="phone" value="{{profile.phone}}" class="form-control" id="exampleInputText1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputText1" class="form-label">Address</label>
+              <input type="text" name="address" value="{{profile.address}}" class="form-control" id="exampleInputText1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputText1" class="form-label">State</label>
+              <input type="text" name="state" value="{{profile.state}}" class="form-control" id="exampleInputText1">
+              <input type="hidden" name="total" value="{{total}}" class="form-control" id="exampleInputText1">
+            </div>
+            <button type="submit" class="btn probtn text-white  w-75">Place Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content done -->
+{% endblock content %}
+
+
+<!-- footer  -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}
+<!-- footer done -->

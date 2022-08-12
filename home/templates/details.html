@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}| {{detail.title|title}}{% endblock title %}
+
+{% block carousel %}{% include 'banner.html' %} {% endblock carousel %} 
+
+
+{% block content %}
+    <!-- main content  -->
+    <div class="container mb-5" data-aos="zoom-in" data-aos-duration="3000">
+        <h1 class="cap">{{detail.title|title}}</h1>
+        <div class="row justify-content-center justify-content-md-around justify-content-lg-center text-center gy-5 text-warning pt-5 pb-5">
+            <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2 d-none d-md-block"></div>
+            <div class="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8">
+              <div class="card">
+                <div class="row justify-content-around">
+                  <div class="col-10 col-lg-6">
+                    <img src="{{detail.img.url}}" class="card-img-top img h-100">
+                  </div>
+                  <div class="col-10 col-lg-6">
+                    <div class="card-body">
+                      <h5 class="card-title">Product: {{detail.title}}</h5>
+                      <p class="card-text">Price: {{detail.price}}</p>
+                      <p class="card-text">Description: {{detail.description}}</p>
+                      {% if detail.max < 1  %}
+                        <p class="text-white w-75 p-2 index-btn">Currently out of stock</p>
+                      {% else %}
+                        <form  action="{% url 'addtocart' %}" method="POST">
+                        {% csrf_token %}
+                          <input type="hidden" name="proid" value="{{detail.id}}">
+                          <label for="quant">Quantity
+                          <input type="number" name="quantity" value="1" min="{{detail.min}}" max="{{detail.max}}" class="form-control d-inline-block shadow-none border border-3 border-warning mt-3" style="width: 70px;"> 
+                          </label>
+                        <br>
+                          <button type="submit" id="create-btn" class="btn  text-white w-50 mt-4 shopbtn">Add to Cart</button>
+                        </form>  
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2 d-none d-md-block"></div>
+        </div>
+      </div>
+    <!-- main content done -->
+{% endblock content %}
+
+
+<!-- footer  -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}
+<!-- footer done -->

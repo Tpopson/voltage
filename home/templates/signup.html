@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}| All products{% endblock title %}
+
+{% block carousel %}{% include 'banner.html' %} {% endblock carousel %} 
+
+
+{% block content %}
+    <!-- main content  -->
+    <div class="container mb-5">
+      <h1 class="cap">user signup</h1>
+      <div class="row justify-content-center justify-content-md-around justify-content-lg-center text-center gy-5 text-warning pt-5 pb-5">
+        <div class="col-10 col-sm-10 col-md-2 col-lg-3 col-xl-3 d-none d-lg-block">
+          <div class="card border-0">
+            <img src="{% static '' %}img/carousel3.jpg" class="card-img-top rounded-circle mx-auto w-75 imge">
+          </div>
+        </div>
+        <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-5">
+          <div class="profile-form px-lg-3 text-start">
+            <form class="px-5 py-3" action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+              <div class="mb-2">
+                <div id="textHelp" class="form-text text-capitalize mb-3 form-text">
+                  to fast track your transaction, kindly signup or signin if you have an existing account.</div>
+                <label for="exampleInputText1" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" id="exampleInputText1">
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputText1" class="form-label">First Name</label>
+                <input type="text" name="first_name" class="form-control" id="exampleInputText1">
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputText1" class="form-label">Last Name</label>
+                <input type="text" name="last_name" class="form-control" id="exampleInputText1">
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputText1" class="form-label">Phone</label>
+                <input type="text" name="phone" class="form-control" id="exampleInputText1">
+                <input type="hidden" name="pix" value="profile/avatar.png" class="form-control" id="exampleInputText1">
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password1" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label">Repeat Password</label>
+                <input type="password" name="password2" class="form-control" id="exampleInputPassword1">
+              </div>
+              <button type="submit" class="btn w-50 w-md-25  mt-4 probtn">SignUp</button>
+            </form>
+            <div id="textHelp" class="form-text mt-3 form-text">
+              signup to create an account or <a href="{% url 'signin' %}" class="text-secondary w-50 w-md-25">SignIn</a> if you already have an one.
+            </div>
+          </div>
+        </div>
+        <div class="col-10 col-sm-10 col-md-2 col-lg-3 col-xl-3 d-none d-lg-block">
+          <div class="card border-0">
+            <img src="{% static '' %}img/carousel4.jpg" class="card-img-top rounded-circle mx-auto w-75 imge">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- main content done -->
+{% endblock content %}
+
+
+<!-- footer  -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}
+<!-- footer done -->

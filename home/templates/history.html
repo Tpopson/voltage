@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}|{{profile.user.username}}'s'  Basket History{% endblock title %}
+
+{% block carousel %}{% include 'banner.html' %} {% endblock carousel %} 
+
+
+{% block content %}
+<div class="container my-5" data-aos="zoom-in" data-aos-duration="3000">
+  <h1 class="cap">order  history</h1>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="table-responsive table-box">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">image</th>
+              <th scope="col">item</th>
+              <th scope="col">$ price</th>
+              <th scope="col">quantity</th>
+              <th scope="col">$ amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if shopcart %}
+              {% for cart in shopcart  %}
+                <tr>
+                  <td><img src="{{cart.product.img.url}}" style="width: 50px;"></td>
+                  <td>{{cart.product.title|title}}</td>
+                  <td>{{cart.price|floatformat:2|intcomma}}</td>
+                  <td>{{cart.quantity}}</td>
+                  <td>{{cart.amount|floatformat:2|intcomma}}</td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+        <table class="table text-end">
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>subtotal: {{subtotal|floatformat:2|intcomma}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>vat: {{vat|floatformat:2|intcomma}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>total: {{total|floatformat:2|intcomma}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+
+<!-- footer  -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}
+<!-- footer done -->

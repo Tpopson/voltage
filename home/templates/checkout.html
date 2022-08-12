@@ -1,0 +1,24 @@
+{% load humanize %}
+ 
+            
+              {% if cart %}
+                {% for item in cart %}
+                  <tr>
+                    <td><img src="{{item.product.img.url}}" style="width: 60px;"></td>
+                    <td>{{item.price|floatformat:2|intcomma}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.amount|floatformat:2|intcomma}}</td>
+                  </tr>
+                {% endfor %}
+              {% endif %} 
+            
+           
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>total: {{total|floatformat:2|intcomma}}</td>
+              </tr>
+           
+      
+      

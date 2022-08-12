@@ -1,0 +1,50 @@
+<div id="contact">
+  <h1 class="cap">contact us</h1>
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-10 col-sm-5 contact"  data-aos="fade-up-right" data-aos-duration="3000">
+        <div class="pt-2 pt-sm-2 pt-lg-4">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iste consectetur dolorum accusamus iusto, vitae amet sint 
+            aut ex dolorem? 
+          </p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iste consectetur dolorum accusamus iusto, vitae amet sint 
+            aut ex dolorem? 
+          </p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iste consectetur dolorum accusamus iusto, vitae amet sint 
+            aut ex dolorem? 
+          </p>
+        </div>            
+      </div>
+     <div class="col-10 col-sm-5" data-aos="fade-up-left" data-aos-duration="3000">
+       <div class="form cont">
+        <form action="{% url 'contact' %}" method='POST'>
+        {% csrf_token %}
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Full Name</label>
+            <input type="text" name="full_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Message</label>
+            <textarea name="message" class="form-control" id="" cols="30" rows="5"></textarea>
+          </div>
+          <button type="submit" class="btn  text-white w-50 index-btn">Submit</button>
+        </form>
+       </div>
+     </div>
+    </div>
+  </div>
+</div>
+<div class="container my-5" data-aos="zoom-in" data-aos-duration="3000">
+  <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.
+  4083123851815!2d3.3487828147187106!3d6.596068995229837!2m3!1f0!2f0!3f0!
+  3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b92244a84e98b%3A0xdebfa140a2d42c14!
+  2sToyin%20St%2C%20101233%2C%20Ikeja!5e0!3m2!1sen!2sng!4v1654548331838!5m2!1sen!
+  2sng"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>

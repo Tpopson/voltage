@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}| Transaction completed{% endblock title %}
+
+{% block carousel %}{% include 'banner.html' %} {% endblock carousel %} 
+
+
+{% block content %}
+    <!-- main content  -->
+    <div class="container mb-5" data-aos="zoom-in" data-aos-duration="3000">
+      <h1 class="cap">Transaction Complete</h1>
+      <div class="row justify-content-center justify-content-md-around justify-content-lg-center text-center gy-5 text-warning pt-5 pb-5">
+        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4">
+          <div class="card border-0">
+            <img src="{{profile.pix.url}}" class="card-img-top rounded-circle mx-auto w-75 imge">
+            <div class="card-body">
+              <h5 class="card-title">Name: {{profile.first_name|title}}</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-10 col-sm-10 col-md-5 col-lg-5 col-xl-5 pt-5">
+          <h3>Dear {{profile.first_name|title}} your transaction is successful!</h3>
+          <h5>Thank you for your patronage.</h5>
+          <h6>We look forward to doing more business with you.</h6>
+        </div>
+        <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3">
+          <ul class="list-unstyled callback">
+            <li class="mb-3"><a href="/" class="btn w-75">home</a></li>
+            <li class="mb-3"><a href="{% url 'product' %}" class="btn w-75">products</a></li>
+            <li class="mb-3"><a href="{% url 'profile' %}" class="btn w-75">profile</a></li>
+            <li class="mb-3"><a href="{% url 'profile_update' %}" class="btn w-75">profile update</a></li>
+            <li class="mb-3"><a href="{% url 'password' %}" class="btn w-75">password update</a></li>
+            <li class="mb-3"><a href="{% url 'addtocart' %}" class="btn w-75">shopcart</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- main content done -->
+{% endblock content %}
+
+
+<!-- footer  -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}
+<!-- footer done -->

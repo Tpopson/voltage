@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}|{{profile.user.username}}'s'  Basket{% endblock title %}
+
+{% block carousel %}{% include 'banner.html' %} {% endblock carousel %} 
+
+
+{% block content %}
+<div class="container my-5" data-aos="zoom-in" data-aos-duration="3000">
+  <h1 class="cap">{{profile.first_name|title}} your shopcart</h1>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="table-responsive table-box">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">delete</th>
+              <th scope="col">image</th>
+              <th scope="col">item</th>
+              <th scope="col">$ price</th>
+              <th scope="col">quantity</th>
+              <th scope="col">update</th>
+              <th scope="col">$ amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if shopcart %}
+              {% for cart in shopcart  %}
+                <tr>
+                  <td scope="row">
+                    <form action="{% url 'delete' %}" method="POST">
+                    {% csrf_token %}
+                      <input type="hidden" name="prodid" value="{{cart.id}}">
+                      <button onclick="return confirm('Are you sure you want to delete this item?')" type="submit"><i class="fas fa-trash"></i></button>
+                    </form>
+                  </td>
+                  <td><img src="{{cart.product.img.url}}" style="width: 50px;"></td>
+                  <td>{{cart.product.title|title}}</td>
+                  <td>{{cart.price|floatformat:2|intcomma}}</td>
+                  <td>{{cart.quantity}}</td>
+                  <td>
+                    <form action="{% url 'update' %}" method="POST">
+                    {% csrf_token %}
+                      <input type="number" name="quant" value="{{cart.quantity}}" min="{{cart.min}}" max="{{cart.max}}" style="width: 70px;">
+                      <input type="hidden" name="proid" value="{{cart.id}}">
+                      <button class="text-success" onclick="return confirm('Are you sure you want to update this item quantity?')" type="submit"><i class="fa-solid fa-circle-check"></i></button></td>
+                    </form>
+                  </td>
+                  <td>{{cart.amount|floatformat:2|intcomma}}</td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>subtotal: {{subtotal|floatformat:2|intcomma}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>vat: {{vat|floatformat:2|intcomma}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>total: {{total|floatformat:2|intcomma}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><a href="{% url 'checkout' %}" class="btn probtn text-white w-25 w-md-25">checkout</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button checkbtn newaccord" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Checkout
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <h4 class="check-title mb-3">order summary</h4>
+              <div class="table-responsive table-box">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">image</th>
+                      <th scope="col">price</th>
+                      <th scope="col">quantity</th>
+                      <th scope="col">amount</th>
+                    </tr>
+                  </thead>
+                  <tbody class="checkout">
+                  </tbody>
+                </table>
+                <table class="table mb-5">
+                  <tbody>
+                  </tbody>
+                </table>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed newaccord" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Delivery Details
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12 col-lg-10">
+                    <h4 class="check-title mb-3">delivery address</h4>
+                      <div class="form-box ml-5">
+                        <form action="{% url 'pay' %}" method="POST">
+                        {% csrf_token %}
+                          <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">First Name</label>
+                            <input type="text" name="first_name" value="{{profile.first_name}}" class="form-control" id="exampleInputText1">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">Last Name</label>
+                            <input type="text" name="last_name" value="{{profile.last_name}}" class="form-control" id="exampleInputText1">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" name="email" value="{{profile.email}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">Phone</label>
+                            <input type="text" name="phone" value="{{profile.phone}}" class="form-control" id="exampleInputText1">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">Address</label>
+                            <input type="text" name="address" value="{{profile.address}}" class="form-control" id="exampleInputText1">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">State</label>
+                            <input type="text" name="state" value="{{profile.state}}" class="form-control" id="exampleInputText1">
+                            <input type="hidden" name="total" value="{{total}}" class="form-control" id="exampleInputText1">
+                          </div>
+                          <button type="submit" class="btn probtn text-white  w-25">Place Order</button>
+                        </form>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+<!-- footer  -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}
+<!-- footer done -->
